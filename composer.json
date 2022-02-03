@@ -1,0 +1,32 @@
+{
+  "name": "jouleslabs/illumine-admin",
+  "description": "Admin panel boilerplate",
+  "type": "library",
+  "license": "MIT",
+  "version": "0.0.1",
+  "autoload": {
+    "psr-4": {
+      "JoulesLabs\\IllumineAdmin\\": "src/"
+    },
+    "files": [
+      "Utilities/illumineadmin.php",
+      "Utilities/ToasterAlert.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Neloy Ahmed",
+      "email": "rubelinvisible@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "JoulesLabs\\IllumineAdmin\\IllumineAdminServiceProvider"
+      ]
+    }
+  }
+}

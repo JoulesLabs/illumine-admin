@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::group(['middleware' => 'guest:admin'], function() {
-//     Route::get('/login', 'AuthController@loginPage')->name('auth.login.page');
-//     Route::post('/login', 'AuthController@login')->name('auth.login');
-// });
+Route::group(['middleware' => 'guest:admin', 'namespace' => 'JoulesLabs\IllumineAdmin\Controllers'], function() {
+    Route::get('/login', 'AuthController@loginPage')->name('auth.login.page');
+    Route::post('/login', 'AuthController@login')->name('auth.login');
+});
 
-// Route::group(['middleware' => 'auth:admin'], function() {
+Route::group(['middleware' => 'auth:admin'], function() {
     Route::get('/logout', 'AuthController@logout')->name('auth.logout');
     //Dashboard
     Route::view('/welcome', 'admin.home')->name('home');
@@ -97,4 +97,4 @@ use Illuminate\Support\Facades\Route;
 //     Route::get('/orders', 'OrderController@index')->name('order.index');
 //     Route::get('/orders/{id}', 'OrderController@show')->name('order.show');
 
-// });
+});

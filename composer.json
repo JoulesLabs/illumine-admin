@@ -20,7 +20,9 @@
     }
   ],
   "require": {
-    "php": ">=7.4"
+    "php": ">=7.4",
+    "nahid/permit": "^2.3",
+    "myclabs/php-enum": "^1.7"
   },
   "extra": {
     "laravel": {

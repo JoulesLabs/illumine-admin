@@ -6,6 +6,9 @@ return [
     'route_as' => 'admin::',
     // other options...
 
+    'users' => [
+        'table' => 'illumine_admin_users',
+    ],
 
     'auth' => [
         'guard' => 'web',

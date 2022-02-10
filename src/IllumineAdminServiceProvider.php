@@ -38,9 +38,21 @@ class IllumineAdminServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../config/admin.php' => config_path('admin.php'),
               ], 'config');
+
+            // Publish seeder
+            $this->publishes([
+                realpath(__DIR__.'/../database/seeders/') => database_path('seeders'),
+            ], 'seeders');
+
+            // Publish factories
+            $this->publishes([
+                realpath(__DIR__.'/../database/factories/') => database_path('factories'),
+            ], 'factories');
         }
 
         $this->registerRoutes();
+
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'illumine-admin');
     }

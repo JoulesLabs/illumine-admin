@@ -27,7 +27,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $userModel = User::where('email', $request->input('email'))
+        $userModel = config('illumineadmin.users.model')::where('email', $request->input('email'))
                             // ->where('status', UserStatus::ACTIVE())
                             // ->where('type', UserType::INTERNAL())
                             ->first();

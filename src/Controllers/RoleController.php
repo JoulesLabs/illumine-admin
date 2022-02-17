@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace JoulesLabs\IllumineAdmin\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -29,66 +29,66 @@ class RoleController extends Controller
         return view('admin.roles.create', compact('abilities'));
     }
 
-    // public function store(Request $request): RedirectResponse
-    // {
-    //     auth_admin()->allows('role.create');
+    public function store(Request $request): RedirectResponse
+    {
+        auth_admin()->allows('role.create');
 
-    //     $this->validate($request, [
-    //         'role_name' => ['required'],
-    //         'permissions' => ['required', 'array']
-    //     ]);
+        $this->validate($request, [
+            'role_name' => ['required'],
+            'permissions' => ['required', 'array']
+        ]);
 
-    //     if (auth_admin()->canDo('user.store')) {
-    //         $this->validate($request, [
-    //             'role_name' => ['required']
-    //         ]);
-    //     }
+        if (auth_admin()->canDo('user.store')) {
+            $this->validate($request, [
+                'role_name' => ['required']
+            ]);
+        }
 
-    //     $data['role_name'] = $request->input('role_name');
-    //     $data['permission'] = $request->input('permissions', []);
+        $data['role_name'] = $request->input('role_name');
+        $data['permission'] = $request->input('permissions', []);
 
-    //     $role = new Role();
-    //     $role->fill($data);
+        $role = new Role();
+        $role->fill($data);
 
-    //     if (!$role->save()) {
-    //         return redirect()->back()->with(['_status' => 'error', '_msg' => 'Unable to save the data!']);
-    //     }
+        if (!$role->save()) {
+            return redirect()->back()->with(['_status' => 'error', '_msg' => 'Unable to save the data!']);
+        }
 
-    //     return redirect()->back()->with(['_status' => 'success', '_msg' => 'Successfully created role!']);
-    // }
-
-
-    // public function edit(string $id): View
-    // {
-    //     auth_admin()->allows('role.update');
-
-    //     $role = Role::findOrFail((int) $id);
-    //     $abilities = Permit::getAbilities();
-
-    //     return view('admin.roles.edit', compact('role', 'abilities'));
-    // }
+        return redirect()->back()->with(['_status' => 'success', '_msg' => 'Successfully created role!']);
+    }
 
 
-    // public function update(string $id, Request $request): RedirectResponse
-    // {
-    //     auth_admin()->allows('role.update');
+    public function edit(string $id): View
+    {
+        auth_admin()->allows('role.update');
 
-    //     $this->validate($request, [
-    //         'role_name' => ['required'],
-    //         'permissions' => ['required', 'array']
-    //     ]);
+        $role = Role::findOrFail((int) $id);
+        $abilities = Permit::getAbilities();
 
-    //     $role = Role::findOrFail((int) $id);
+        return view('admin.roles.edit', compact('role', 'abilities'));
+    }
 
-    //     $data['role_name'] = $request->input('role_name');
-    //     $data['permission'] = $request->input('permissions', []);
 
-    //     $role->fill($data);
+    public function update(string $id, Request $request): RedirectResponse
+    {
+        auth_admin()->allows('role.update');
 
-    //     if (!$role->save()) {
-    //         return redirect()->back()->with(['_status' => 'error', '_msg' => 'Unable to save the data!']);
-    //     }
+        $this->validate($request, [
+            'role_name' => ['required'],
+            'permissions' => ['required', 'array']
+        ]);
 
-    //     return redirect()->back()->with(['_status' => 'success', '_msg' => 'Successfully updated role!']);
-    // }
+        $role = Role::findOrFail((int) $id);
+
+        $data['role_name'] = $request->input('role_name');
+        $data['permission'] = $request->input('permissions', []);
+
+        $role->fill($data);
+
+        if (!$role->save()) {
+            return redirect()->back()->with(['_status' => 'error', '_msg' => 'Unable to save the data!']);
+        }
+
+        return redirect()->back()->with(['_status' => 'success', '_msg' => 'Successfully updated role!']);
+    }
 }

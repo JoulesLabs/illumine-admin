@@ -5,6 +5,7 @@ namespace JoulesLabs\IllumineAdmin\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use JoulesLabs\IllumineAdmin\Enum\Admin\UserStatus;
 use Nahid\Permit\Facades\Permit;
@@ -25,37 +26,42 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
-    // public function changePassword(): View
-    // {
-    //     return view('admin.users.change_password');
-    // }
+    public function changePassword(): View
+    {
+        return view('admin.users.change_password');
+    }
 
-    // public function updatePassword(UpdatePasswordRequest $request): RedirectResponse
-    // {
-    //     /* @phpstan-ignore-next-line */
-    //     if (!Hash::check($request->input('current_password'), auth_admin()->password)) {
-    //         return redirect()->back()->with([
-    //             '_status' => 'error',
-    //             '_msg' => 'You are not authorized to change the password!'
-    //         ]);
-    //     }
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        $this->validate($request, [
+            'current_password' => ['required'],
+            'new_password' => ['required', 'confirmed', 'min:6', 'max:255'],
+        ]);
 
-    //     /* @phpstan-ignore-next-line */
-    //     auth_admin()->password = $request->input('new_password');
+        /* @phpstan-ignore-next-line */
+        if (!Hash::check($request->input('current_password'), auth_admin()->password)) {
+            return redirect()->back()->with([
+                '_status' => 'error',
+                '_msg' => 'You are not authorized to change the password!'
+            ]);
+        }
 
-    //     /* @phpstan-ignore-next-line */
-    //     if (!auth_admin()->save()) {
-    //         return redirect()->back()->with([
-    //             '_status' => 'error',
-    //             '_msg' => 'Unable to save the data!'
-    //         ]);
-    //     }
+        /* @phpstan-ignore-next-line */
+        auth_admin()->password = $request->input('new_password');
 
-    //     return redirect()->back()->with([
-    //         '_status' => 'success',
-    //         '_msg' => 'Successfully changed password!'
-    //     ]);
-    // }
+        /* @phpstan-ignore-next-line */
+        if (!auth_admin()->save()) {
+            return redirect()->back()->with([
+                '_status' => 'error',
+                '_msg' => 'Unable to save the data!'
+            ]);
+        }
+
+        return redirect()->back()->with([
+            '_status' => 'success',
+            '_msg' => 'Successfully changed password!'
+        ]);
+    }
 
     public function create(Request $request): View
     {
@@ -80,7 +86,7 @@ class UserController extends Controller
 
         $user = new (config('illumineadmin.users.model'))();
         $inputs = $request->all();
-        $inputs['status'] = UserStatus::ACTIVE();
+        // $inputs['status'] = UserStatus::ACTIVE();
 
         $user->fill($inputs);
 

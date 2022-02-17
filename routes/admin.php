@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => 'JoulesLabs\IllumineA
 //     Route::put('/users/{id}/banned', 'UserController@banned')->name('user.banned');
     // Route::get('/users/change_password', 'UserController@changePassword')->name('user.change_password_page');
     Route::get('/users/change_password', 'UserController@changePassword')->name('user.change_password_page');
-//     Route::post('/users/change_password', 'UserController@updatePassword')->name('user.change_password');
+    Route::post('/users/change_password', 'UserController@updatePassword')->name('user.change_password');
 //     Route::get('/users/profile', 'UserController@profile')->name('user.profile');
 //     Route::post('/users/{id}/forget_password', 'UserController@forgetPassword')->name('user.forget_password');
 
@@ -39,9 +39,9 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => 'JoulesLabs\IllumineA
     Route::get('/roles/create', 'RoleController@create')
 //         //->middleware('permit:role.create')
         ->name('role.create');
-//     Route::post('/roles', 'RoleController@store')->name('role.store');
-//     Route::get('/roles/{id}/edit', 'RoleController@edit')->name('role.edit');
-//     Route::put('/roles/{id}', 'RoleController@update')->name('role.update');
+    Route::post('/roles', 'RoleController@store')->name('role.store');
+    Route::get('/roles/{id}/edit', 'RoleController@edit')->name('role.edit');
+    Route::put('/roles/{id}', 'RoleController@update')->name('role.update');
 
 //     // drivers
 //     Route::get('/drivers', 'DriverController@index')->name('driver.index');

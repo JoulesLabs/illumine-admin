@@ -106,9 +106,7 @@
 
                                     @endif
 
-                                    @if(auth_admin()->canDo('user.reset_password'))
-                                        <x-btn-ico url="{{route('admin::user.change_password_page_by_admin', [$user->id])}}" icon="fas fa-cogs" size="sm" type="success">Reset Password</x-btn-ico>
-                                    @endif
+                                    
                                 </div>
                             </td>
                         </tr>

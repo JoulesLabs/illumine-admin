@@ -20,7 +20,12 @@ class IllumineAdmin extends User
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at',
         'password',
+        'avatar',
+        'designation',
+        'status',
+        'permissions',
     ];
 
     public function getTable()

@@ -2,8 +2,11 @@
 
 namespace JoulesLabs\IllumineAdmin;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use JoulesLabs\IllumineAdmin\View\Components\ConfirmModal;
+use JoulesLabs\IllumineAdmin\View\Components\UI\Buttons\BtnIco;
 
 class IllumineAdminServiceProvider extends ServiceProvider
 {
@@ -55,12 +58,16 @@ class IllumineAdminServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'illumine-admin');
+
+        Blade::component('btn-ico', BtnIco::class);
+        Blade::component('confirm-modal', ConfirmModal::class);
     }
 
     protected function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__ . '/../routes/admin.php');
+            $this->loadRoutesFrom(__DIR__ . '/../routes/breadcrumbs.php');
         });
 
         

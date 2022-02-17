@@ -20,11 +20,11 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => 'JoulesLabs\IllumineA
     Route::view('/welcome', 'admin.home')->name('home');
     // Route::get('/welcome', 'ReportsAndStatsController@dashboard')->name('home');
 
-//     Route::get('/users', 'UserController@index')->name('user.index');
-//     Route::get('/users/create', 'UserController@create')->name('user.create');
-//     Route::post('/users', 'UserController@store')->name('user.store');
-//     Route::get('/users/{id}/edit', 'UserController@edit')->name('user.edit');
-//     Route::put('/users/{id}', 'UserController@update')->name('user.update');
+    Route::get('/users', 'UserController@index')->name('user.index');
+    Route::get('/users/create', 'UserController@create')->name('user.create');
+    Route::post('/users', 'UserController@store')->name('user.store');
+    Route::get('/users/{id}/edit', 'UserController@edit')->name('user.edit');
+    Route::put('/users/{id}', 'UserController@update')->name('user.update');
 //     Route::put('/users/{id}/disable', 'UserController@disable')->name('user.disable');
 //     Route::put('/users/{id}/enable', 'UserController@enable')->name('user.enable');
 //     Route::put('/users/{id}/banned', 'UserController@banned')->name('user.banned');
@@ -35,10 +35,10 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => 'JoulesLabs\IllumineA
 //     Route::post('/users/{id}/forget_password', 'UserController@forgetPassword')->name('user.forget_password');
 
 
-//     Route::get('/roles', 'RoleController@index')->name('role.index');
-//     Route::get('/roles/create', 'RoleController@create')
+    Route::get('/roles', 'RoleController@index')->name('role.index');
+    Route::get('/roles/create', 'RoleController@create')
 //         //->middleware('permit:role.create')
-//         ->name('role.create');
+        ->name('role.create');
 //     Route::post('/roles', 'RoleController@store')->name('role.store');
 //     Route::get('/roles/{id}/edit', 'RoleController@edit')->name('role.edit');
 //     Route::put('/roles/{id}', 'RoleController@update')->name('role.update');

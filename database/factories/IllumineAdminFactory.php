@@ -28,11 +28,11 @@ class IllumineAdminFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => 'admin@cassetex.xyz',
-            'password' => bcrypt('secret'), // password
+            'password' => 'secret', 
             'remember_token' => Str::random(10),
-            'type' => 1,
-            'avatar' => null,
-            'primary_location' => $this->faker->address,
+            // 'type' => 1,
+            // 'avatar' => null,
+            // 'primary_location' => $this->faker->address,
             // 'status' => UserStatus::ACTIVE(),
         ];
     }

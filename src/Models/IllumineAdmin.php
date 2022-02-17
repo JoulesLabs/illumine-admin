@@ -12,6 +12,17 @@ class IllumineAdmin extends User
 {
     use HasFactory, Permitable;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
     public function getTable()
     {
         return config('illumineadmin.users.table');
@@ -20,5 +31,10 @@ class IllumineAdmin extends User
     protected static function newFactory()
     {
         return IllumineAdminFactory::new();
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }

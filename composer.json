@@ -22,7 +22,8 @@
   "require": {
     "php": ">=7.4",
     "nahid/permit": "dev-master",
-    "myclabs/php-enum": "^1.7"
+    "myclabs/php-enum": "^1.7",
+    "diglactic/laravel-breadcrumbs": "^7.1"
   },
   "extra": {
     "laravel": {

@@ -97,9 +97,9 @@
                                         <x-btn-ico url="{{route('admin::user.edit', [$user->id])}}" icon="fa-pencil-alt" size="sm" type="warning">Edit</x-btn-ico>
 
                                         @if (auth()->user()->id !== $user->id )
-                                            @if($user?->status == \App\Enum\Admin\UserStatus::ACTIVE()->getValue())
+                                            @if($user?->status == \JoulesLabs\IllumineAdmin\Enum\Admin\UserStatus::ACTIVE()->getValue())
                                             <x-btn-ico class="disable_user_button"  icon="fas fa-times-circle" size="sm" type="primary" data-toggle="modal" data-target="#disable_user_confirm_modal" data-url="{{route('admin::user.disable', [$user->id])}}" data-backdrop="static" data-keyboard="false" >Disable</x-btn-ico>
-                                            @elseif($user?->status == \App\Enum\Admin\UserStatus::INACTIVE()->getValue())
+                                            @elseif($user?->status == \JoulesLabs\IllumineAdmin\Enum\Admin\UserStatus::INACTIVE()->getValue())
                                             <x-btn-ico class="enable_user_button"  icon="fas fa-check-circle" size="sm" type="secondary" data-toggle="modal" data-target="#enable_user_confirm_modal" data-url="{{route('admin::user.enable', [$user->id])}}" data-backdrop="static" data-keyboard="false" >Enable</x-btn-ico>
                                             @endif
                                         @endif

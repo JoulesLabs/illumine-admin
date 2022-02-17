@@ -2,10 +2,7 @@
 
 namespace JoulesLabs\IllumineAdmin\Controllers;
 
-use App\Enums\UserStatus;
-use App\Enums\UserType;
-// use App\Http\Controllers\Controller;
-use App\Models\User;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

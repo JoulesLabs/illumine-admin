@@ -42,14 +42,14 @@ class ToasterAlert
 
     public function flash(): void
     {
-        session()->flash( config('admin.toaster_alert.key') . '_'. $this->key, $this->message);
+        session()->flash( config('illumineadmin.toaster_alert.key') . '_'. $this->key, $this->message);
     }
 
     public function get(): array
     {
-        $prefix = config('admin.toaster_alert.key');
+        $prefix = config('illumineadmin.toaster_alert.key');
         $list = [];
-        foreach(config('admin.toaster_alert.levels') as $level) {
+        foreach(config('illumineadmin.toaster_alert.levels') as $level) {
             if (session()->has($prefix .'_'. $level)) {
                 $list[$level] = session()->get($prefix .'_'. $level);
             }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>{{ config('admin.app_name') }} | @yield('title', 'Auth')</title>
+    <title>{{ config('illumineadmin.app_name') }} | @yield('title', 'Auth')</title>
 
     @include('admin.partials.styles')
     <link rel="stylesheet" href="{{ asset('/illumine-admin/assets/css/bootstrap-social.css') }}">

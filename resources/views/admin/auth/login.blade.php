@@ -5,7 +5,7 @@
 
 @section('contents')
 
-    @if(!config('admin.sso_enabled'))
+    @if(!config('illumineadmin.sso_enabled'))
     <form method="POST" action="{{route('admin::auth.login')}}" class="needs-validation" novalidate="">
         <div class="form-group">
             <label for="email">Email</label>
@@ -48,7 +48,7 @@
     </form>
     @endif
 
-    @if(config('admin.sso_enabled'))
+    @if(config('illumineadmin.sso_enabled'))
     <div class="text-center mt-4 mb-3">
         <div class="text-job text-muted">SSO Login</div>
     </div>

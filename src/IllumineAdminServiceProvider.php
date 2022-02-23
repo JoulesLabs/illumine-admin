@@ -36,20 +36,18 @@ class IllumineAdminServiceProvider extends ServiceProvider
 
             // Publish config
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('illumineadmin.php'),
-              ], 'config');
-            $this->publishes([
-                __DIR__.'/../config/admin.php' => config_path('admin.php'),
-              ], 'config');
+                __DIR__ . '/../config/config.php' => config_path('illumineadmin.php'),
+            ], 'config');
+            
 
             // Publish seeder
             $this->publishes([
-                realpath(__DIR__.'/../database/seeders/') => database_path('seeders'),
+                realpath(__DIR__ . '/../database/seeders/') => database_path('seeders'),
             ], 'seeders');
 
             // Publish factories
             $this->publishes([
-                realpath(__DIR__.'/../database/factories/') => database_path('factories'),
+                realpath(__DIR__ . '/../database/factories/') => database_path('factories'),
             ], 'factories');
         }
 
@@ -57,7 +55,8 @@ class IllumineAdminServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'illumine-admin');
+        // $this->loadViewsFrom(__DIR__ . '/../resources/views', 'k');
+
 
         Blade::component('btn-ico', BtnIco::class);
         Blade::component('confirm-modal', ConfirmModal::class);
@@ -69,8 +68,6 @@ class IllumineAdminServiceProvider extends ServiceProvider
             $this->loadRoutesFrom(__DIR__ . '/../routes/admin.php');
             $this->loadRoutesFrom(__DIR__ . '/../routes/breadcrumbs.php');
         });
-
-        
     }
 
     protected function routeConfiguration()

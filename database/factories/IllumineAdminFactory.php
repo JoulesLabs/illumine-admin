@@ -11,12 +11,20 @@ use JoulesLabs\IllumineAdmin\Models\IllumineAdmin;
 
 class IllumineAdminFactory extends Factory
 {
+    protected $model ;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->model = config('illumineadmin.users.model');
+    }
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = IllumineAdmin::class;
+    // protected $model = IllumineAdmin::class;
+   
 
     /**
      * Define the model's default state.
@@ -27,8 +35,8 @@ class IllumineAdminFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'email' => 'admin@cassetex.xyz',
-            'password' => 'secret', 
+            'email' => 'admin@jouleslabs.com',
+            'password' => 'secret',
             'remember_token' => Str::random(10),
             // 'type' => 1,
             // 'avatar' => null,

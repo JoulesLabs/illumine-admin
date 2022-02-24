@@ -15,20 +15,25 @@ class IllumineAdminSeeder extends Seeder
      */
     public function run()
     {
-        IllumineAdmin::truncate();
+        config('illumineadmin.users.model')::truncate();
+        
 
-        $emails = [
-            'shamir.imtiaz@jouleslabs.com',
-            'ashraful@jouleslabs.com',
-            'zahid@jouleslabs.com'
-        ];
+        // $emails = [
+        //     'shamir.imtiaz@jouleslabs.com',
+        //     'ashraful@jouleslabs.com',
+        //     'zahid@jouleslabs.com'
+        // ];
 
 
-        foreach ($emails as $email) {
-            IllumineAdmin::factory()
-                ->create([
-                    'email' => $email
-                ]);
-        }
+        
+        config('illumineadmin.users.model')::factory()
+                ->create();
+       
+        // foreach ($emails as $email) {
+        //     IllumineAdmin::factory()
+        //         ->create([
+        //             'email' => $email
+        //         ]);
+        // }
     }
 }

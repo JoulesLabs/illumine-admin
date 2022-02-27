@@ -38,7 +38,7 @@ class IllumineAdminServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('illumineadmin.php'),
             ], 'config');
-            
+
 
             // Publish seeder
             $this->publishes([
@@ -49,11 +49,19 @@ class IllumineAdminServiceProvider extends ServiceProvider
             $this->publishes([
                 realpath(__DIR__ . '/../database/factories/') => database_path('factories'),
             ], 'factories');
+
+            // Publish migrations
+            if (!class_exists('CreateIllumineAdminsTable')) {
+                $this->publishes([
+                    __DIR__ . '/../database/migrations/create_illumine_admins_table.php.stub' => database_path('migrations/' . '2014_10_12_000000' . '_create_illumine_admins_table.php'),
+                    // you can add any number of migrations here
+                ], 'migrations');
+            }
         }
 
         $this->registerRoutes();
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        // $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // $this->loadViewsFrom(__DIR__ . '/../resources/views', 'k');
 

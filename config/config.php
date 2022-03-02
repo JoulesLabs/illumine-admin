@@ -4,7 +4,7 @@ return [
     'route_prefix' => 'admin',
     'route_middleware' => 'web',
     'route_as' => 'admin::',
-    'app_name' => env('ADMIN_APP_NAME', 'Illumine Admin'),
+    'app_name' => env('ADMIN_APP_NAME', 'IllumineAdmin'),
     // 'sso_enabled' => env('ADMIN_SSO_ENABLED', false),
     "toaster_alert" => [
         'key' => "illumine_admin_alert",
@@ -27,4 +27,8 @@ return [
         'guard' => 'web',
         'provider' => 'users'
     ],
+
+    // Add  'copyright_text' if the purpose is not fully served by 'app_name',
+    // 'copyright_text' => 'IllumineAdmin',
+    'brand_image' => 'jouleslabs-logo1.png',
 ];

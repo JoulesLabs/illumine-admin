@@ -5,6 +5,7 @@ return [
     'route_middleware' => 'web',
     'route_as' => 'admin::',
     'app_name' => env('ADMIN_APP_NAME', 'IllumineAdmin'),
+    'app_short_name' => 'IA',
     // 'sso_enabled' => env('ADMIN_SSO_ENABLED', false),
     "toaster_alert" => [
         'key' => "illumine_admin_alert",

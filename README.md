@@ -8,6 +8,12 @@ PHP >= 7.4
 ```
 
 ## Importing the Package Locally
+
+Create `packages/jouleslabs/illumine-admin` directory in the root of your laravel application and clone this repo: 
+```
+git clone git@github.com:JoulesLabs/illumine-admin.git packages/jouleslabs/illumine-admin
+```
+
 Add the following "repositories" key below the "scripts" section in `composer.json` file of your Laravel app
 ```
 {
@@ -26,17 +32,17 @@ You can now require the package in the Laravel application using:
 ```
 composer require jouleslabs/illumine-admin
 ```
-Then run these commands to publish assets and config：
+Then run this commands to publish necessay files：
 ```
 php artisan vendor:publish --provider="JoulesLabs\IllumineAdmin\IllumineAdminServiceProvider"
 ```
 
-(Manual task) This package deepends on nahid/permit package
+This package deepends on nahid/permit package. So run the following command to publish necessary files:
 ```
 php artisan vendor:publish --provider="Nahid\Permit\PermitServiceProvider"
 ```
 
-(Manual task)
+Create a Role model for your laravel application:
 ```
 php artisan make:model Role
 ```
@@ -45,7 +51,7 @@ In config/auth.php add admin authentication guard as:
 ```
 'admin' => [
            'driver' => 'session',
-            'provider' => 'illumineadmin',
+           'provider' => 'illumineadmin',
         ],
 ```
 

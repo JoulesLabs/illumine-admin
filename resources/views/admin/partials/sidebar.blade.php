@@ -4,7 +4,7 @@
             <a href="{{route('admin::home')}}">{{config('illumineadmin.app_name')}}</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{route('admin::home')}}">FA</a>
+            <a href="{{route('admin::home')}}">{{config('illumineadmin.app_short_name')}}</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Menu</li>

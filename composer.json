@@ -14,10 +14,14 @@
     ]
   },
   "authors": [
-    {
-      "name": "Neloy Ahmed",
-      "email": "rubelinvisible@gmail.com"
-    }
+          {
+              "name": "Nahid Bin Azhar",
+              "email": "nahid.dns@gmail.com"
+          },
+        {
+            "name": "Neloy Ahmed",
+            "email": "rubelinvisible@gmail.com"
+        }
   ],
   "require": {
     "php": ">=7.4",

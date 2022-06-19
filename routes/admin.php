@@ -15,6 +15,9 @@ Route::group(['middleware' => 'guest:admin', 'namespace' => 'JoulesLabs\Illumine
 });
 
 Route::group(['middleware' => 'auth:admin', 'namespace' => 'JoulesLabs\IllumineAdmin\Controllers'], function() {
+    Route::get('/', function () {
+        return "Hello, Admin!";
+    });
     Route::get('/logout', 'AuthController@logout')->name('auth.logout');
     //Dashboard
     Route::view('/welcome', 'admin.home')->name('home');

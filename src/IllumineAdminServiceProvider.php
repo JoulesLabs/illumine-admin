@@ -27,28 +27,34 @@ class IllumineAdminServiceProvider extends ServiceProvider
             // Publish assets
             $this->publishes([
                 __DIR__ . '/../resources/assets' => public_path('illumine-admin'),
-            ], 'assets');
+            ], 'illumine-assets');
 
             // Publish views
             $this->publishes([
                 __DIR__ . '/../resources/views' => resource_path('views'),
-            ], 'views');
+            ], 'illumine-views');
 
             // Publish config
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('illumineadmin.php'),
-            ], 'config');
+            ], 'illumine-config');
 
 
             // Publish seeder
             $this->publishes([
                 realpath(__DIR__ . '/../database/seeders/') => database_path('seeders'),
-            ], 'seeders');
+            ], 'illumine-seeders');
 
             // Publish factories
             $this->publishes([
                 realpath(__DIR__ . '/../database/factories/') => database_path('factories'),
-            ], 'factories');
+            ], 'illumine-factories');
+
+            // Publish routes
+            $this->publishes([
+                realpath(__DIR__ . '/../routes/admin.php.stub') => base_path('routes/admin.php'),
+                realpath(__DIR__ . '/../routes/breadcrumbs.php.stub') => base_path('routes/breadcrumbs.php'),
+            ], 'illumine-routes');
 
             // Publish migrations
             if (!class_exists('CreateIllumineAdminsTable')) {
@@ -73,8 +79,13 @@ class IllumineAdminServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__ . '/../routes/admin.php');
-            $this->loadRoutesFrom(__DIR__ . '/../routes/breadcrumbs.php');
+            $route = base_path('routes/admin.php');
+            if (file_exists($route)) {
+                $this->loadRoutesFrom($route);
+            }
+
+
+
         });
     }
 

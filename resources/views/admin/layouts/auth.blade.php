@@ -33,7 +33,7 @@
 
 
                     <div class="simple-footer">
-                        Copyright &copy; {{config('illumineadmin.app_name')}} 2021
+                        Copyright &copy; {{config('illumineadmin.app_name')}} {{date('Y')}}
                     </div>
                 </div>
             </div>

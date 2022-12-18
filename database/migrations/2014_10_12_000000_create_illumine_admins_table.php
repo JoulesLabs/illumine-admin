@@ -13,7 +13,7 @@ class CreateIllumineAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('illumineadmin.users.table'), function (Blueprint $table) {
+        Schema::connection(config("permit.connection"))->create(config('illumineadmin.users.table'), function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();

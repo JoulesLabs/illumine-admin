@@ -28,6 +28,12 @@ class IllumineAdmin extends User
         'permissions',
     ];
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->setConnection(config("permit.connection"));
+    }
+
     public function getTable()
     {
         return config('illumineadmin.users.table');

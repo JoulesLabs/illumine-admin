@@ -48,7 +48,7 @@ class AuthController extends Controller
                 ]);
         }
 
-        Auth::guard('admin')->login($userModel);
+        Auth::guard(config('illumineadmin.auth.guard'))->login($userModel);
         $request->session()->regenerate();
 
         return redirect()->route('admin::home');
@@ -56,7 +56,7 @@ class AuthController extends Controller
 
     public function logout(): RedirectResponse
     {
-        Auth::guard('admin')->logout();
+        Auth::guard(config('illumineadmin.auth.guard'))->logout();
         \request()->session()->flush();
         \request()->session()->regenerate(true);
 

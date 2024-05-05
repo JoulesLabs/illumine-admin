@@ -25,7 +25,7 @@ class AuthController extends Controller
         ]);
 
         $userModel = config('illumineadmin.users.model')::where('email', $request->input('email'))
-                            // ->where('status', UserStatus::ACTIVE())
+                            ->where('status', UserStatus::ACTIVE)
                             // ->where('type', UserType::INTERNAL())
                             ->first();
 

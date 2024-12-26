@@ -27,7 +27,7 @@
     "php": ">=7.4",
     "nahid/permit": "^2.0.0",
     "myclabs/php-enum": "^1.7",
-    "diglactic/laravel-breadcrumbs": "^7.1"
+    "diglactic/laravel-breadcrumbs": "^9.0"
   },
   "extra": {
     "laravel": {
